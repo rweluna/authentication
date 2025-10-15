@@ -60,12 +60,12 @@ export default function Register() {
             }
 
         } catch (error) {
-// show backend error
+            // show backend error
             if (error.response && error.response.data.error) {
             toast.error(error.response.data.error);
             } else {
-            toast.error(('Something went wrong. Please try again.'))
-}
+                toast.error(('Something went wrong. Please try again.'))
+            }
         }
     };
 
