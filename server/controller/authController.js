@@ -38,14 +38,14 @@ const registerUser = async (req,res) => {
         }
         // hash password and create user
         const hashedPassword = await hashPassword(password)
-        const register = await User.create({
+        const registerUser = await User.create({
             name,
             dob,
             email,
             password: hashedPassword
         });
         const token = jwt.sign(
-        { id: register._id, email: register.email},
+        { id: registerUser._id, email: registerUser.email},
         process.env.JWT_SECRET,
         {expiresIn: '1d'}
         );
