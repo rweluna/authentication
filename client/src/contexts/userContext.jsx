@@ -8,10 +8,17 @@ export default function UserContextProvider({ children }) {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // axios.get('/profile')
-        // .then(({ data }) => setUser(data))  setUser(data.user))
-        // .catch(() => setUser(null));
-    } , [])
+    const token = localStorage.getItem('token');
+    if (!token) return; 
+
+    axios.get('/user', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(({ data }) => setUser(data))
+    .catch(() => setUser(null));
+  }, []);
 
   return (
       <UserContext.Provider value={ {user, setUser} }>
