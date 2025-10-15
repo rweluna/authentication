@@ -20,8 +20,17 @@ export default function UserContextProvider({ children }) {
     .catch(() => setUser(null));
   }, []);
 
+    const logout = async () => {
+      try {
+        await axios.post('/logout', {}, { withCredentials: true });
+        localStorage.removeItem('user');
+        setUser(null);
+      } catch (error) {
+        console.error('Logout failed:', error);
+      }
+    };
   return (
-      <UserContext.Provider value={ {user, setUser} }>
+      <UserContext.Provider value={ {user, setUser, logout} }>
         {children}
       </UserContext.Provider>
   );

@@ -9,11 +9,7 @@ const test = (req,res) => {
 
 // register
 const registerUser = async (req,res) => {
-    const token = jwt.sign(
-        { id: register._id, email: register.email},
-        process.env.JWT_SECRET,
-        {expiredIn: '1d'}
-    );
+    
     try {
         const {name, dob, email, password} = req.body;
         // validate required fields
@@ -101,8 +97,8 @@ const loginUser = async (req,res) => {
         res
             .cookie('token', token, {
                 httpOnly: true,
-                secure: false,
-                sameSite: listSearchIndexes,
+                secure: false, // true in production
+                sameSite: 'lax',
             })
             .json({ 
                 message: 'Login successful',
@@ -117,8 +113,26 @@ const loginUser = async (req,res) => {
             res.status(500).json({error: 'Internal server error.'});
         }
 };
+
+// get user
+const getUser = async (req, res) => {
+res.json({ user: req.user });
+};
+
+// logout
+const logoutUser = (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: false, // true in production with HTTPS
+    sameSite: 'strict',
+  });
+  res.status(200).json({ message: 'Logged out successfully' });
+};
+
 module.exports = {
     test,
     registerUser, 
-    loginUser
+    loginUser,
+    getUser,
+    logoutUser,
 };
