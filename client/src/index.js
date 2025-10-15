@@ -3,22 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-<<<<<<< Updated upstream
-=======
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import  UserContextProvider from './contexts/userContext.jsx';
 import { Toaster } from 'react-hot-toast';
 import Login from './pages/login.jsx';
 import Register from './pages/register.jsx';
 import Dashboard from './pages/dashboard.jsx';
->>>>>>> Stashed changes
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<<<<<<< Updated upstream
     <App />
-=======
     <Router>
       <UserContextProvider>
         <Toaster 
@@ -33,7 +28,6 @@ root.render(
         </Routes>
       </UserContextProvider>
     </Router>
->>>>>>> Stashed changes
   </React.StrictMode>
 );
 
