@@ -1,0 +1,52 @@
+# Simple Authentication using MERN
+
+A secure authentication system built with the **MERN Stack (MongoDB, Express, React, Node.js)**.  
+It provides user **registration**, **login**, and **logout** functionality, protected by **JWT (JSON Web Tokens)** for secure session management.
+
+---
+
+## Features
+
+- User registration with validation  
+- User login and logout  
+- Protected routes using JWT  
+- Passwords securely hashed before saving to database  
+- Integrated frontend (React) and backend (Node + Express)  
+- MongoDB for database management  
+
+---
+
+## Tech Stack
+
+**Frontend:** React, Axios, React Router  
+**Backend:** Node.js, Express.js, JWT, bcrypt  
+**Database:** MongoDB (Mongoose)  
+
+---
+
+## Installation & Setup
+
+### Clone the repository
+
+git clone https://github.com/<your-username>/authentication.git
+cd authentication
+
+### Install dependecies
+cd server
+npm install
+cd client
+npm install
+
+### Environment 
+Create a .env file inside the server folder and add:
+
+PORT=5000
+MONGO_URL=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+
+### Run the application
+
+cd client
+npm start
+cd server
+node index.js
